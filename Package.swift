@@ -26,6 +26,7 @@ let package = Package(
             dependencies: [
                 "MSBCore",
                 .product(name: "MSBCoreUI", package: "MSBCore"),
+                .product(name: "BackbaseKit", package: "MSBCore"),
                 "Resolver",
                 "SnapKit",
                 "CombineCocoa"
