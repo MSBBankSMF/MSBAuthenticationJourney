@@ -14,8 +14,9 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../../MSBCore"),
-        .package(url: "https://github.com/hmlongco/Resolver.git", from: "1.5.1"),
-        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1")),
+        .package(path: "../../PublicLib/SnapKit"),
+        .package(path: "../../PublicLib/RxCocoa"),
+        .package(path: "../../PublicLib/Resolver"),
         .package(url: "https://github.com/CombineCommunity/CombineCocoa.git", from: "0.2.1")
     ],
     targets: [
@@ -26,7 +27,7 @@ let package = Package(
             dependencies: [
                 "MSBCore",
                 .product(name: "MSBCoreUI", package: "MSBCore"),
-                .product(name: "BackbaseKit", package: "MSBCore"),
+//                .product(name: "BackbaseKit", package: "MSBCore"),
                 "Resolver",
                 "SnapKit",
                 "CombineCocoa"
