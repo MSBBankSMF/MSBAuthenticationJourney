@@ -14,6 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../../MSBCore"),
+        .package(path: "../../MSBCoreUI"),
         .package(path: "../../PublicLib/SnapKit"),
         .package(path: "../../PublicLib/RxCocoa"),
         .package(path: "../../PublicLib/Resolver"),
@@ -26,7 +27,7 @@ let package = Package(
             name: "MSBAuthenticationJourney",
             dependencies: [
                 "MSBCore",
-                .product(name: "MSBCoreUI", package: "MSBCore"),
+                .product(name: "MSBCoreUI", package: "MSBCoreUI"),
 //                .product(name: "BackbaseKit", package: "MSBCore"),
                 "Resolver",
                 "SnapKit",
