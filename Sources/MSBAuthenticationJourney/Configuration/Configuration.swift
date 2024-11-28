@@ -5,7 +5,7 @@
 //  Created by doandat on 11/11/24.
 //
 
-import UIKit
+import Foundation
 //import Resolver
 
 extension MSBAuthenticationJourney {
