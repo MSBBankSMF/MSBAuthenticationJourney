@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -18,7 +18,13 @@ let package = Package(
         .package(path: "../../PublicLib/SnapKit"),
         .package(path: "../../PublicLib/RxCocoa"),
         .package(path: "../../PublicLib/Resolver"),
-        .package(url: "https://github.com/CombineCommunity/CombineCocoa.git", from: "0.2.1")
+        .package(path: "../../MSBBackbase/Backbase"),
+        .package(path: "../../MSBBackbase/BackbaseCountryCore"),
+        .package(path: "../../MSBBackbase/BackbaseIdentity"),
+        .package(path: "../../MSBBackbase/BackbaseSDKSwiftWrapper"),
+        .package(path: "../../MSBBackbase/BackbaseSecureStorage"),
+        .package(url: "https://github.com/CombineCommunity/CombineCocoa.git", from: "0.2.1"),
+        .package(url: "https://github.com/Moya/Moya.git", .upToNextMajor(from: "15.0.0")),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -26,12 +32,21 @@ let package = Package(
         .target(
             name: "MSBAuthenticationJourney",
             dependencies: [
-                "MSBCore",
                 .product(name: "MSBCoreUI", package: "MSBCoreUI"),
-//                .product(name: "BackbaseKit", package: "MSBCore"),
+                .product(name: "MSBLogger", package: "MSBCore"),
+                .product(name: "MSBFoundation", package: "MSBCore"),
+                "Moya",
                 "Resolver",
                 "SnapKit",
-                "CombineCocoa"
+                "CombineCocoa",
+                "Backbase",
+                "BackbaseCountryCore",
+                "BackbaseIdentity",
+                "BackbaseSDKSwiftWrapper",
+                "BackbaseSecureStorage"
+            ],
+            resources: [
+                .process("Resources") // Include the Config folder
             ]
         ),
         .testTarget(

@@ -7,12 +7,10 @@
 
 import Foundation
 
-private final class MSBAuthenticationJourneyBundleToken { }
-
 extension Bundle {
     public static var authenticationJourney: Bundle? {
-        let bundle = Bundle(for: MSBAuthenticationJourneyBundleToken.self)
-        
+        let bundle = Bundle.module
+
         guard let resourceUrl = bundle.url(forResource: "MSBAuthenticationJourneyAssets", withExtension: "bundle"),
               let resourceBundle = Bundle(url: resourceUrl) else {
             return bundle

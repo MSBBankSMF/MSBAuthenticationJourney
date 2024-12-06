@@ -15,8 +15,8 @@ final class LoginViewModel: NSObject {
     @Published var userName: String = ""
     @Published var password: String = ""
     
-    private lazy var authenUseCase: AuthenticationUseCase = {
-        guard let useCase = Resolver.optional(AuthenticationUseCase.self) else {
+    private lazy var authenUseCase: MSBAuthenticationUseCase = {
+        guard let useCase = Resolver.optional(MSBAuthenticationUseCase.self) else {
             fatalError("AuthenticationUseCase needed to continue")
         }
         return useCase

@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		B0F75B692CE1C5D2000CCEEE /* MSBCore in Frameworks */ = {isa = PBXBuildFile; productRef = B0F75B682CE1C5D2000CCEEE /* MSBCore */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		B0F75B4A2CE1C581000CCEEE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -56,7 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0F75B692CE1C5D2000CCEEE /* MSBCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +120,6 @@
 			);
 			name = MSBAuthenticationJourneyExample;
 			packageProductDependencies = (
-				B0F75B682CE1C5D2000CCEEE /* MSBCore */,
 			);
 			productName = MSBAuthenticationJourneyExample;
 			productReference = B0F75B382CE1C580000CCEEE /* MSBAuthenticationJourneyExample.app */;
@@ -210,7 +204,7 @@
 			mainGroup = B0F75B2F2CE1C580000CCEEE;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				B0F75B662CE1C5C2000CCEEE /* XCLocalSwiftPackageReference "../../MSBCore" */,
+				B00D84152CFF0C4100B49409 /* XCLocalSwiftPackageReference "../../MSBAuthenticationJourney" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B0F75B392CE1C580000CCEEE /* Products */;
@@ -610,19 +604,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		B0F75B662CE1C5C2000CCEEE /* XCLocalSwiftPackageReference "../../MSBCore" */ = {
+		B00D84152CFF0C4100B49409 /* XCLocalSwiftPackageReference "../../MSBAuthenticationJourney" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../MSBCore;
+			relativePath = ../../MSBAuthenticationJourney;
 		};
 /* End XCLocalSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B0F75B682CE1C5D2000CCEEE /* MSBCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0F75B662CE1C5C2000CCEEE /* XCLocalSwiftPackageReference "../../MSBCore" */;
-			productName = MSBCore;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B0F75B302CE1C580000CCEEE /* Project object */;
 }

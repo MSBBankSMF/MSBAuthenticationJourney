@@ -1,0 +1,27 @@
+{
+  "development": {
+    "debugEnable": true
+  },
+  "backbase": {
+    "serverURL": "https://business.bus.sdbxaz.azure.backbaseservices.com",
+    "experience": "",
+    "localModelPath": "$(contextRoot)/conf/model.json",
+    "version": "6.2.3.1",
+    "identity": {
+      "baseURL": "https://identity.bus.sdbxaz.azure.backbaseservices.com",
+      "clientId": "mobile-client",
+      "realm": "customer",
+      "applicationKey": "business"
+    }
+  },
+  "security": {
+    "allowedDomains": [
+      "*"
+    ]
+  },
+  "custom": {
+    "default-http-headers": {
+        "X-SDBXAZ-API-KEY": "ADD YOUR API KEY HERE"
+    }
+  }
+}

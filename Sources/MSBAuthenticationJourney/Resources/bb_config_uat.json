@@ -1,0 +1,21 @@
+{
+    "backbase": {
+        "serverURL": "https://retail.stg.sdbxaz.azure.backbaseservices.com",
+        "version": "6.1.5",
+        "identity": {
+            "baseURL": "https://identity.stg.sdbxaz.azure.backbaseservices.com",
+            "realm": "customer",
+            "clientId": "mobile-client",
+            "applicationKey": "retail"
+        }
+    },
+    "security": {
+        "allowedDomains": [
+            "*"
+        ]
+    },
+    "development": {
+        "debugEnable": true
+    },
+    "bankTimeZone": "Europe/Amsterdam"
+}

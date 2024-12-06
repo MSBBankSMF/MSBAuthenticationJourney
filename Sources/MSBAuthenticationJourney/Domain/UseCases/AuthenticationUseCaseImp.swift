@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class AuthenticationUseCaseImp: AuthenticationUseCase {
+public final class MSBAuthenticationUseCaseImp: MSBAuthenticationUseCase {
     private let repository: AuthenticationRepositoryProtocol
 
     // MARK: - Init
