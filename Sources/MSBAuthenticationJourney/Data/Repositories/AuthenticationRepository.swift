@@ -12,11 +12,11 @@ public class AuthenticationRepository: AuthenticationRepositoryProtocol {
         self.remoteDataSource = remoteDataSource
     }
     
-    public func login(userName: String , password: String) throws {
-        try remoteDataSource.login(userName: userName, password: password)
+    public func login(userName: String , password: String) async throws {
+        try await remoteDataSource.login(userName: userName, password: password)
     }
     
-    public func logout() throws {
-        try remoteDataSource.logout()
+    public func logout() async throws {
+        try await remoteDataSource.logout()
     }
 }

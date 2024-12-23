@@ -9,7 +9,7 @@ import Foundation
 import Resolver
 import Backbase
 import MSBLogger
-import MSBFoundation
+import MSBUtilities
 import Moya
 
 extension MSBAuthenticationJourney {
@@ -18,11 +18,40 @@ extension MSBAuthenticationJourney {
         public init() {
         }
         
-        public func register() {
-            setupBackbaseSDK()
+        @MainActor public func register() {
+//            setupBackbaseSDK()
+            setupService()
         }
-        
-        
+    }
+}
+
+extension MSBAuthenticationJourney.Configuration {
+    @MainActor
+    func setupService() {
+        let openIdConnectService: OpenIdConnectService = {
+            guard let config = Resolver.optional(MSBBackbaseConfiguration.self),
+                  let authPlugin = Resolver.optional(AccessTokenPlugin.self) else {
+                fatalError("Backbase Config not found")
+            }
+            let moyaProvider: MoyaProvider<OpenIdConnectService.Target> = {
+                return .init(
+                    session: .init(configuration: config.securitySessionConfiguration),
+                    plugins: [authPlugin]
+                )
+            }()
+            
+            return OpenIdConnectService(
+                clientSecret: "xvRVNfhHwQxRUjAaqKT3U0cWUORqH39t",
+                baseURL: config.baseURL,
+                moyaProvider: moyaProvider
+            )
+        }()
+
+        Resolver.register {
+            MSBAuthenticationUseCaseImp(
+                repository: AuthenticationRepository(remoteDataSource: openIdConnectService)
+            ) as MSBAuthenticationUseCase
+        }
     }
 }
 
@@ -66,7 +95,7 @@ extension MSBAuthenticationJourney.Configuration {
     
     private var getBBConfigUrl: URL? {
         var configJsonName = "bb_config_production"
-        switch MSBEnvironmentValues.environmentType {
+        switch EnvironmentValues.environmentType {
         case .dev:
             configJsonName = "bb_config_dev"
         case .sit:

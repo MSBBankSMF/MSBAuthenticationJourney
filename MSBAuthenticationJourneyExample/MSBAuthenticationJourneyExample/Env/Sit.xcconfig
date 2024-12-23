@@ -1,0 +1,6 @@
+MSB_ENV = SIT
+MSB_APP_NAME = MSB EB-SIT
+MSB_APP_BUNDLE_ID = vn.com.msb.sit
+MSB_API_HOST = sit.msb.vn
+MSB_CDN_HOST = cdn.msb.com.vn
+GOOGLE_SERVICE_INFO_PLIST_FILENAME = GoogleService-Info-sit

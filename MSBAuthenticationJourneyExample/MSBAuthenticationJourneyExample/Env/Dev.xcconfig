@@ -1,0 +1,6 @@
+MSB_ENV = DEV
+MSB_APP_NAME = MSB EB-DEV
+MSB_APP_BUNDLE_ID = com.backbase.business.development
+MSB_API_HOST = dev.msb.vn
+MSB_CDN_HOST = cdn.msb.com.vn
+GOOGLE_SERVICE_INFO_PLIST_FILENAME = GoogleService-Info-dev

@@ -7,6 +7,6 @@
 import Foundation
 
 public protocol MSBAuthenticationUseCase {
-    func login(userName: String , password: String) throws
-    func logout() throws
+    func login(userName: String , password: String) async throws
+    func logout() async throws
 }

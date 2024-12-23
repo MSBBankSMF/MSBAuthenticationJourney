@@ -1,0 +1,6 @@
+MSB_ENV = UAT
+MSB_APP_NAME = MSB EB-UAT
+MSB_APP_BUNDLE_ID = vn.com.msb.uat
+MSB_API_HOST = uat.msb.vn
+MSB_CDN_HOST = cdn.msb.com.vn
+GOOGLE_SERVICE_INFO_PLIST_FILENAME = GoogleService-Info-uat

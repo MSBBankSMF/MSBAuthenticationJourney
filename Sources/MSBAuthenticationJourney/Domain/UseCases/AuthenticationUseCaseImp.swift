@@ -14,13 +14,13 @@ public final class MSBAuthenticationUseCaseImp: MSBAuthenticationUseCase {
     public init(repository: AuthenticationRepositoryProtocol) {
         self.repository = repository
     }
-        
-    public func login(userName: String, password: String) throws {
-        try repository.login(userName: userName, password: password)
+   
+    public func login(userName: String, password: String) async throws {
+        try await repository.login(userName: userName, password: password)
     }
     
-    public func logout() throws {
-        try repository.logout()
+    public func logout() async throws {
+        try await repository.logout()
     }
 }
 

@@ -1,0 +1,6 @@
+MSB_ENV = PRODUCTION
+MSB_APP_NAME = MSB EB
+MSB_APP_BUNDLE_ID = com.backbase.modelbank.retailbankingapp.dev
+MSB_API_HOST = dev.msb.vn
+MSB_CDN_HOST = cdn.msb.com.vn
+GOOGLE_SERVICE_INFO_PLIST_FILENAME = GoogleService-Info

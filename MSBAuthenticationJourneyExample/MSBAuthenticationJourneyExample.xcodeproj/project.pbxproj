@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		18FDACDA2D15E8A600AE6BA1 /* MSBAuthenticationJourney in Frameworks */ = {isa = PBXBuildFile; productRef = 18FDACD92D15E8A600AE6BA1 /* MSBAuthenticationJourney */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B0F75B4A2CE1C581000CCEEE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +33,22 @@
 		B0F75B532CE1C581000CCEEE /* MSBAuthenticationJourneyExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSBAuthenticationJourneyExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		18F039612D16F7E2005B4958 /* Exceptions for "MSBAuthenticationJourneyExample" folder in "MSBAuthenticationJourneyExample" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B0F75B372CE1C580000CCEEE /* MSBAuthenticationJourneyExample */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B0F75B3A2CE1C580000CCEEE /* MSBAuthenticationJourneyExample */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				18F039612D16F7E2005B4958 /* Exceptions for "MSBAuthenticationJourneyExample" folder in "MSBAuthenticationJourneyExample" target */,
+			);
 			path = MSBAuthenticationJourneyExample;
 			sourceTree = "<group>";
 		};
@@ -52,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18FDACDA2D15E8A600AE6BA1 /* MSBAuthenticationJourney in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +138,7 @@
 			);
 			name = MSBAuthenticationJourneyExample;
 			packageProductDependencies = (
+				18FDACD92D15E8A600AE6BA1 /* MSBAuthenticationJourney */,
 			);
 			productName = MSBAuthenticationJourneyExample;
 			productReference = B0F75B382CE1C580000CCEEE /* MSBAuthenticationJourneyExample.app */;
@@ -407,6 +426,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MSBAuthenticationJourneyExample/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -446,6 +466,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MSBAuthenticationJourneyExample/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -609,6 +630,14 @@
 			relativePath = ../../MSBAuthenticationJourney;
 		};
 /* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18FDACD92D15E8A600AE6BA1 /* MSBAuthenticationJourney */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B00D84152CFF0C4100B49409 /* XCLocalSwiftPackageReference "../../MSBAuthenticationJourney" */;
+			productName = MSBAuthenticationJourney;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B0F75B302CE1C580000CCEEE /* Project object */;
 }

@@ -3,16 +3,14 @@
     "debugEnable": true
   },
   "backbase": {
-    "serverURL": "https://business.bus.sdbxaz.azure.backbaseservices.com",
-    "experience": "",
-    "localModelPath": "$(contextRoot)/conf/model.json",
-    "version": "6.2.3.1",
-    "identity": {
-      "baseURL": "https://identity.bus.sdbxaz.azure.backbaseservices.com",
-      "clientId": "mobile-client",
-      "realm": "customer",
-      "applicationKey": "business"
-    }
+      "serverURL": "https://app.stg.sdbxaz.azure.backbaseservices.com",
+      "version": "6.1.5",
+      "identity": {
+          "baseURL": "https://identity.stg.sdbxaz.azure.backbaseservices.com",
+          "realm": "customer",
+          "clientId": "mobile-client",
+          "applicationKey": "retail"
+      }
   },
   "security": {
     "allowedDomains": [
@@ -20,8 +18,8 @@
     ]
   },
   "custom": {
-    "default-http-headers": {
-        "X-SDBXAZ-API-KEY": "ADD YOUR API KEY HERE"
-    }
-  }
+     "default-http-headers": {
+       "X-SDBXAZ-API-KEY": "rndid-dev-c7171082-c6fc-cac4-6b33-d1f7cee26518"
+     }
+ }
 }

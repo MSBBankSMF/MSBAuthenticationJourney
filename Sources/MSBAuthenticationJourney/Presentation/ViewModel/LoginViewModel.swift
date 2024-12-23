@@ -10,10 +10,11 @@ import Foundation
 import Combine
 import Resolver
 
-final class LoginViewModel: NSObject {
+public final class LoginViewModel: ObservableObject {
     @Published private(set) var screenState: LoginScreenState = .initial
-    @Published var userName: String = ""
-    @Published var password: String = ""
+    @Published var userName: String = "sdbxaz-stg-amos"
+    @Published var password: String = "fgKiPcSCiKquxGMQ"
+    @Published var isFormValid: Bool = false
     
     private lazy var authenUseCase: MSBAuthenticationUseCase = {
         guard let useCase = Resolver.optional(MSBAuthenticationUseCase.self) else {
@@ -22,22 +23,35 @@ final class LoginViewModel: NSObject {
         return useCase
     }()
     
-    private func login(fromEvent event: LoginScreenEvent) {
-        screenState = .loading
+    private func login(fromEvent event: LoginScreenEvent) async {
+        DispatchQueue.main.async {
+            self.screenState = .loading
+        }
         do {
-            try authenUseCase.login(userName: userName, password: password)
-            screenState = .authenticated
+            try await authenUseCase.login(userName: userName, password: password)
+            DispatchQueue.main.async {
+                self.screenState = .authenticated
+            }
         } catch {
-            screenState = .hasError
+            DispatchQueue.main.async {
+                self.screenState = .hasError
+            }
         }
     }
     
     func onEvent(_ event: LoginScreenEvent) {
         switch event {
         case .login:
-            login(fromEvent: event)
+            Task {
+                await login(fromEvent: event)
+            }
         }
     }
-
-
+    
+    public init() {
+        $userName
+            .combineLatest($password)
+            .map { !$0.isEmpty && !$1.isEmpty }
+            .assign(to: &$isFormValid)
+    }
 }
