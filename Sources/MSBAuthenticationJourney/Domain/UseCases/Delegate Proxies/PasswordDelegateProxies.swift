@@ -1,8 +1,8 @@
 //
-//  MSBDelegateProxies.swift
+//  PasswordDelegateProxies.swift
 //  MSBAuthenticationJourney
 //
-//  Created by Nicky on 22/12/24.
+//  Created by Nicky on 24/12/24.
 //
 import Backbase
 import BackbaseIdentity
@@ -59,8 +59,10 @@ internal final class PasswordAuthClientResumingDelegateProxy: PasswordAuthClient
     }
 }
 
-internal final class AuthClientDelegateProxy: NSObject, AuthClientDelegate {
-    typealias Handler = (SessionState) -> Void
+internal final class BBIDPasscodeChangeDelegateProxy: NSObject, BBIDPasscodeChangeDelegate {
+    typealias Result = Swift.Result<Void, MSBAuthenticationJourney.Error>
+    typealias Handler = (Result) -> Void
+
     var handler: Handler
 
     required init(handler: @escaping Handler) {
@@ -68,11 +70,11 @@ internal final class AuthClientDelegateProxy: NSObject, AuthClientDelegate {
         super.init()
     }
 
-    func sessionState(_ newSessionState: SessionState) {
-        handler(newSessionState)
+    func passcodeChangeDidSucceed() {
+        handler(.success(()))
     }
 
-    func sessionState(_ newSessionState: SessionState, withError error: Error!) {
-        handler(newSessionState)
+    func passcodeChangeDidFail(with error: Error) {
+        handler(.failure(.init(passcode: error)))
     }
 }

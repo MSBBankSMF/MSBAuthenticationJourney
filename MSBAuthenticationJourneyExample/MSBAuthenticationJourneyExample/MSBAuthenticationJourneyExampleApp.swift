@@ -18,15 +18,25 @@ struct MSBAuthenticationJourneyExampleApp: App {
 }
 
 struct MainView: View {
-    init() {
-        Task { @MainActor in
-            BackbaseService()
-            MSBAuthenticationJourney.Configuration().register()
+    @State private var isConfigured = false
+    
+    var body: some View {
+        if isConfigured {
+            LoginScreen(viewModel: LoginViewModel(session: .none))
+        } else {
+            ProgressView("Configuring...")
+                .onAppear {
+                    configure()
+                }
         }
     }
     
-    var body: some View {
-        LoginScreen(viewModel: LoginViewModel())
+    private func configure() {
+        Task { @MainActor in
+            BackbaseService()
+            MSBAuthenticationJourney.Configuration().register()
+            isConfigured = true
+        }
     }
     
 //    func handleSessionChange(_ session: IdentityAuthenticationJourney.Session) {

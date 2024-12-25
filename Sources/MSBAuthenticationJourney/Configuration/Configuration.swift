@@ -8,6 +8,7 @@
 import Foundation
 import Resolver
 import Backbase
+import BackbaseIdentity
 import MSBLogger
 import MSBUtilities
 import Moya
@@ -19,8 +20,9 @@ extension MSBAuthenticationJourney {
         }
         
         @MainActor public func register() {
-//            setupBackbaseSDK()
+            setupBackbaseSDK()
             setupService()
+            setupRouters()
         }
     }
 }
@@ -41,17 +43,16 @@ extension MSBAuthenticationJourney.Configuration {
             }()
             
             return OpenIdConnectService(
-                clientSecret: "xvRVNfhHwQxRUjAaqKT3U0cWUORqH39t",
                 baseURL: config.baseURL,
                 moyaProvider: moyaProvider
             )
         }()
 
-        Resolver.register {
-            MSBAuthenticationUseCaseImp(
-                repository: AuthenticationRepository(remoteDataSource: openIdConnectService)
-            ) as MSBAuthenticationUseCase
-        }
+        let usecase =  MSBAuthenticationUseCaseImp(
+            repository: AuthenticationRepository(remoteDataSource: openIdConnectService)
+        )
+        Backbase.register(authClient: usecase)
+        Resolver.register { usecase as MSBAuthenticationUseCase }
     }
 }
 
@@ -91,6 +92,12 @@ extension MSBAuthenticationJourney.Configuration {
             return authorizationHeader.replacingOccurrences(of: "Bearer ", with: "")
         }
         Resolver.register { authPlugin }
+    }
+    
+    private func setupRouters() {
+        Resolver.register { BaseRouter() as BBIDRouter }.scope(Resolver.application)
+        Resolver.register { BiometricRouter() as BBIDBiometricsRouter }.scope(Resolver.application)
+        Resolver.register { PasscodeRouter() as BBIDPasscodeRouter }.scope(Resolver.application)
     }
     
     private var getBBConfigUrl: URL? {

@@ -5,6 +5,7 @@
 //  Created by Nicky on 21/12/24.
 //
 import Foundation
+import Backbase
 import Moya
 
 public struct OpenIdConnectTargetBuilder: TargetType, AccessTokenAuthorizable {
@@ -13,22 +14,22 @@ public struct OpenIdConnectTargetBuilder: TargetType, AccessTokenAuthorizable {
     public var baseURL: URL
     public var path: String {
         switch operation {
-        case .requestChallenge:
-            return "/auth/realms/customer/protocol/openid-connect/token"
+        case .fetchName:
+            return "/auth/\(Backbase.configuration().backbase.identity.realm)/protocol/openid-connect/userinfo"
         }
     }
     
     public var method: Moya.Method {
         switch operation {
-        case .requestChallenge:
-            return .post
+        case .fetchName:
+            return .get
         }
     }
     
     public var task: Task {
         switch operation {
-        case .requestChallenge(let parameters):
-            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .fetchName:
+            return .requestPlain
             
         }
     }
@@ -39,7 +40,7 @@ public struct OpenIdConnectTargetBuilder: TargetType, AccessTokenAuthorizable {
     
     public var authorizationType: AuthorizationType? {
         switch operation {
-        case .requestChallenge:
+        case .fetchName:
             return .basic
         }
     }
@@ -51,7 +52,7 @@ public struct OpenIdConnectTargetBuilder: TargetType, AccessTokenAuthorizable {
 
 extension OpenIdConnectTargetBuilder {
     enum OperationType {
-        case requestChallenge(parameters: [String: Any])
+        case fetchName
     }
 }
 
